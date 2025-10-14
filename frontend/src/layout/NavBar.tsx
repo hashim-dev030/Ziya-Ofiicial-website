@@ -10,7 +10,7 @@ const Navbar = ({}: NavbarProps) => {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
-    <nav className="w-full max-w-[1440px] h-[89px] bg-[#FFFFFF] shadow-md flex items-center justify-between px-6 md:px-[48px] mx-auto">
+    <nav className="w-full max-w-[100vw] h-[89px] bg-[#FFFFFF] shadow-md flex items-center justify-between px-6 md:px-[48px] mx-auto">
       {/* Left: Logo + Brand */}
       <div className="relative flex items-center">
         <img src={logo} alt="Logo" className="w-[50px] h-[55px] md:w-[66px] md:h-[70px]" />

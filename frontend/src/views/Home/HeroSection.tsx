@@ -40,7 +40,7 @@ const HeroSection = () => {
   <div className="max-w-[118.056vw] mx-auto flex flex-col lg:flex-row items-center justify-between gap-6 sm:gap-8 md:gap-44 px-4 sm:px-6 md:px-8">
     {/* Left: Text */}
     <div className="flex-1 space-y-4 sm:space-y-5 text-center lg:text-left ">
-      <h1 className="text-[34px] sm:text-[34px] md:text-[38px] lg:text-[44px]  font-['Poppins'] font-semibold leading-[1.2] animate-bounce [animation-duration:3s] ">
+      <h1 className="text-[2.125rem] sm:text-[34px] md:text-[38px] lg:text-[44px]  font-['Poppins'] font-semibold leading-[1.2] animate-bounce [animation-duration:3s] ">
         Welcome to{' '}
         <span className="text-[#448AFF] whitespace-nowrap">Ziya</span>
         <br />
@@ -57,7 +57,7 @@ const HeroSection = () => {
         </p>
       </div>
 
-      <div className="flex justify-center lg:justify-start pt-2">
+      <div className="flex justify-center lg:justify-center pt-2">
         <button  className="bg-[#00A0E3] text-white w-[160px] h-[42px] sm:w-[180px] sm:h-[46px] md:w-[200px] md:h-[50px] rounded-full font-medium text-sm sm:text-base flex items-center justify-center hover:bg-blue-400 hover:scale-105 transition-transform duration-300 shadow-md">
           Explore Courses
         </button>
