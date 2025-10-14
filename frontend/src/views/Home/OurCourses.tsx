@@ -41,7 +41,7 @@ const OurCourses: React.FC = () => {
         Our Courses
       </h1>
 
-      <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-12">
+      <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 px-3.5 pt-12">
         {courses.map((course, index) => (
           <OurCourseCard
             key={index}
