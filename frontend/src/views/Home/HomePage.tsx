@@ -1,6 +1,8 @@
+import OurCourseCard from '../../components/OurCourseCard'
 import Navbar from '../../layout/NavBar'
 import CourseOffering from './CourseOfferings'
 import HeroSection from './HeroSection'
+import OurCourses from './ourCourses'
 
 const HomePage = () => {
   return (
@@ -8,6 +10,7 @@ const HomePage = () => {
       <Navbar/>
       <HeroSection/>
       <CourseOffering/>
+      <OurCourses/>
     </div>
   )
 }
