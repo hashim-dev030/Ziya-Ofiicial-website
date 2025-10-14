@@ -1,8 +1,8 @@
-import OurCourseCard from '../../components/OurCourseCard'
+import Testmonial from '../../components/Testmonial'
 import Navbar from '../../layout/NavBar'
 import CourseOffering from './CourseOfferings'
 import HeroSection from './HeroSection'
-import OurCourses from './ourCourses'
+import OurCourses from './OurCourses'
 
 const HomePage = () => {
   return (
@@ -11,6 +11,8 @@ const HomePage = () => {
       <HeroSection/>
       <CourseOffering/>
       <OurCourses/>
+      <Testmonial/>
+
     </div>
   )
 }
