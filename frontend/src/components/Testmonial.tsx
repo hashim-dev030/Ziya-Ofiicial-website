@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 
 
@@ -30,7 +30,7 @@ const Testmonial = () => {
     const currentTestimonial = testimonials[currentIndex];
     const totalTestimonials = testimonials.length;
 
-    // Cycles to the previous testimonial
+    
     const handlePrev = () => {
         setCurrentIndex((prevIndex) =>
             (prevIndex - 1 + totalTestimonials) % totalTestimonials
@@ -48,27 +48,25 @@ const Testmonial = () => {
         <div className=" bg-gray-50 flex items-center justify-center p-4 sm:p-6">
             <div className="w-full max-w-4xl mx-auto">
 
-                {/* Header Section */}
+          
                 <header className="text-center mb-12">
                     <h2 className="text-2xl sm:text-4xl font-[500] ">
                         What Our Students Say
                     </h2>
                 </header>
 
-                {/* Testimonial Card Container */}
                 <div className="flex justify-center pt-[6px]">
-                    {/* Testimonial Card */}
+               
                     <div className="bg-white p-8 sm:p-4 rounded-xl shadow-2xl w-[700px] ">
 
 
-                        {/* 1. Quotes Text */}
                         <blockquote className="text-black text-lg sm:text-[18px] font-[400] text-center leading-relaxed min-h-[100px] flex items-center justify-center transition-opacity duration-300 ">                            {/* Removed quote icon block */}
                             <p key={currentTestimonial.id}>
                                 "{currentTestimonial.quote}"
                             </p>
                         </blockquote>
 
-                        {/* 2 & 3. User Info (Name & Position) - Centered and without the icon */}
+                        
                         <div className=" border-gray-100 text-center">
                             <p className="text-lg font-[400]  text-[#94C21A] sm:text-[18px] ">
                                 {currentTestimonial.name}
@@ -78,7 +76,7 @@ const Testmonial = () => {
                             </p>
                         </div>
 
-                        {/* 4. Navigation Buttons < > */}
+                        
                         <div className="flex justify-center gap-6 mt-6">
                             <button
                                 onClick={handlePrev}

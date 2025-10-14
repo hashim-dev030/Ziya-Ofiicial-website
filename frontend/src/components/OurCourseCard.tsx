@@ -20,14 +20,14 @@ const OurCourseCard: React.FC<OurCourseCardProps> = ({ logo, name, description, 
         transition-transform hover:scale-105
       "
     >
-      {/* Logo */}
+     
       <img
         src={logo}
         alt={name}
         className="object-contain h-18 w-18 sm:h-14 sm:w-14 md:h-16 md:w-16 mb-3"
       />
 
-      {/* Course Name */}
+      
       <h1
         className="text-[.9rem] sm:text-base md:text-lg font-semibold text-center leading-tight mb-1 pt-4"
         style={{ color }}
@@ -35,7 +35,7 @@ const OurCourseCard: React.FC<OurCourseCardProps> = ({ logo, name, description, 
         {name}
       </h1>
 
-      {/* Description */}
+      
       <p className="text-sm sm:text-xs md:text-lg text-gray-500 text-center leading-tight line-clamp-2 pt-4">
         {description}
       </p>

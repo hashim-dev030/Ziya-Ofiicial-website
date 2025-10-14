@@ -36,12 +36,11 @@ const courses = [
 const OurCourses: React.FC = () => {
   return (
     <div className=" bg-gray-50 flex flex-col items-center py-10">
-      {/* Headline */}
+      
       <h1 className="text-2xl sm:text-4xl font-[500] mb-8 text-center">
         Our Courses
       </h1>
 
-      {/* Courses Grid */}
       <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-12">
         {courses.map((course, index) => (
           <OurCourseCard
