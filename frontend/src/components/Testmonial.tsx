@@ -49,8 +49,8 @@ const Testmonial = () => {
             <div className="w-full max-w-4xl mx-auto">
 
                 {/* Header Section */}
-                <header className="text-center mb-12 pt-[149px]">
-                    <h2 className="text-4xl sm:text-[50px] font-[500] text-gray-900 tracking-tight">
+                <header className="text-center mb-12">
+                    <h2 className="text-2xl sm:text-4xl font-[500] ">
                         What Our Students Say
                     </h2>
                 </header>

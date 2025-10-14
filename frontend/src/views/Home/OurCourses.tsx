@@ -35,9 +35,9 @@ const courses = [
 
 const OurCourses: React.FC = () => {
   return (
-    <div className="min-h-screen bg-gray-50 flex flex-col items-center py-10">
+    <div className=" bg-gray-50 flex flex-col items-center py-10">
       {/* Headline */}
-      <h1 className="text-2xl sm:text-4xl font-bold mb-8 text-center">
+      <h1 className="text-2xl sm:text-4xl font-[500] mb-8 text-center">
         Our Courses
       </h1>
 
