@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { Link, useLocation } from "react-router-dom";
 import { useNavbarViewModel } from "../viewmodels/NavbarViewModel";
 import logo from "../assets/logo.svg";
 import brandName from "../assets/brandName.svg";
@@ -8,6 +9,18 @@ type NavbarProps = {};
 const Navbar = ({}: NavbarProps) => {
   const { items, setActive } = useNavbarViewModel();
   const [menuOpen, setMenuOpen] = useState(false);
+  const location = useLocation();
+
+  // Sync active tab with current route
+  useEffect(() => {
+    const currentPath = location.pathname;
+    const matchedItem = items.find((item) => item.href === currentPath);
+    if (matchedItem) {
+      setActive(matchedItem.label);
+    } else {
+      setActive(""); // optional: reset if no match
+    }
+  }, [location.pathname]);
 
   return (
     <nav className="w-full max-w-[100vw] h-[89px] bg-[#FFFFFF] shadow-md flex items-center justify-between px-6 md:px-[48px] mx-auto">
@@ -26,15 +39,14 @@ const Navbar = ({}: NavbarProps) => {
       {/* Desktop Menu */}
       <div className="hidden md:flex items-center">
         <ul className="flex items-center pr-[26px] text-[14px] md:text-[16px] font-medium text-gray-700 leading-[100%]">
-          {items.map((item, idx) => {
-            const gaps = { Home: 35, About: 22, Courses: 26, Internships: 18, Service: 35 } as const;
+          {items.map((item) => {
+            const gaps = { Home: 25, About: 25, Courses: 25, Internships: 25, Service: 25, Career :25 } as const;
             const isLast = item.label === "Contact Us";
             const mr = isLast ? 0 : gaps[item.label as keyof typeof gaps] ?? 0;
 
             return (
               <li
                 key={item.label}
-                onClick={() => setActive(item.label)}
                 style={{ marginRight: `${mr}px` }}
                 className={`cursor-pointer pb-[6px] transition ${
                   item.isActive
@@ -42,7 +54,7 @@ const Navbar = ({}: NavbarProps) => {
                     : "hover:text-[#00A0E3]"
                 }`}
               >
-                {item.label}
+                <Link to={item.href}>{item.label}</Link>
               </li>
             );
           })}
@@ -59,7 +71,6 @@ const Navbar = ({}: NavbarProps) => {
           onClick={() => setMenuOpen(!menuOpen)}
           className="text-gray-700 focus:outline-none"
         >
-          {/* simple hamburger icon */}
           <svg
             className="w-6 h-6"
             fill="none"
@@ -102,7 +113,7 @@ const Navbar = ({}: NavbarProps) => {
                     : "hover:text-[#00A0E3]"
                 }`}
               >
-                {item.label}
+                <Link to={item.href}>{item.label}</Link>
               </li>
             ))}
             <button className="bg-[#00A0E3] text-white w-full h-[43px] rounded-[30px] font-medium text-[18px] leading-[100%] hover:bg-blue-400 transition">

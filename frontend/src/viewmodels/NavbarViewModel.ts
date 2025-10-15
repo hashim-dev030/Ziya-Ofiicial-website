@@ -8,6 +8,7 @@ export const useNavbarViewModel = () => {
     { label: "Courses", href: "/courses" },
     { label: "Internships", href: "/internships" },
     { label: "Service", href: "/service" },
+    { label: "Career", href: "/Career" },
     { label: "Contact Us", href: "/contact" },
   ]);
 
