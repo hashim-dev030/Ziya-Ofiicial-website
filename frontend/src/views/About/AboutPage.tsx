@@ -8,7 +8,9 @@ const AboutPage = () => {
       <MainLayout>
         <AboutCover />
         <AboutZiya />
+        <div className="pb-24">
         <DirectorMessage/>
+        </div>
       </MainLayout>
     </div>
   )

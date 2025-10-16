@@ -16,13 +16,13 @@ const AboutZiya: React.FC = () => {
               alt="Academy Icon"
               className="w-10 h-10 md:w-18 md:h-18"
             />
-            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-blue-900 whitespace-nowrap">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold whitespace-nowrap">
               About Ziya Academy
             </h2>
           </div>
 
           {/* Paragraphs */}
-          <div className="space-y-5 text-center lg:text-left text-sm sm:text-base md:text-lg lg:text-xl leading-relaxed font-['Poppins']">
+          <div className="space-y-5 text-center lg:text-left text-sm sm:text-base md:text-lg lg:text-lg leading-relaxed font-['Poppins']">
             <p>
               For over a decade, Ziya Academy has been at the forefront of education
               and technology training, empowering students to transform their potential
