@@ -1,5 +1,5 @@
 import React from "react";
-import OurCourseCard from "../../components/OurCourseCard"; 
+import OurCourseCard from "../../components/Cards/OurCourseCard"; 
 import schoolCoaching from "../../assets/schoolCoaching.svg";  
 import ignou from "../../assets/ignou.svg";  
 import itTraining from "../../assets/itTraining.svg";  
@@ -27,7 +27,7 @@ const courses = [
   },
   {
     logo: internships,
-    name: "Internships.js",
+    name: "Internships",
     description: "Hands-on experience with real-world projects",
     color: '#00A0E3'
   },

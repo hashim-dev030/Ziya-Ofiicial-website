@@ -1,10 +1,11 @@
 import { useEffect, useRef, useState } from "react";
-import hero_image from "../../assets/hero_image.svg";
+import hero_image from "../../assets/home_background_image.png";
 import complete_projects from "../../assets/complete_project_icon.svg";
 import satisfied_customers from "../../assets/satisfied_customer_icon.svg";
 import mastery from "../../assets/mastery_icon.svg";
 import employees from "../../assets/employee_icon.svg";
 import CountUp from "react-countup";
+import { Link } from "react-router-dom";
 
 const HeroSection = () => {
 
@@ -58,9 +59,11 @@ const HeroSection = () => {
       </div>
 
       <div className="flex justify-center lg:justify-center pt-2">
+        <Link to="/Courses">
         <button  className="bg-[#00A0E3] text-white w-[160px] h-[42px] sm:w-[180px] sm:h-[46px] md:w-[200px] md:h-[50px] rounded-full font-medium text-sm sm:text-base flex items-center justify-center hover:bg-blue-400 hover:scale-105 transition-transform duration-300 shadow-md">
           Explore Courses
         </button>
+        </Link>
       </div>
     </div>
 

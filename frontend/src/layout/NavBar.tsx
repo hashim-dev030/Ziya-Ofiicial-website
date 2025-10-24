@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useNavbarViewModel } from "../viewmodels/NavbarViewModel";
 import logo from "../assets/logo.svg";
 import brandName from "../assets/brandName.svg";
@@ -10,6 +10,12 @@ const Navbar = ({}: NavbarProps) => {
   const { items, setActive } = useNavbarViewModel();
   const [menuOpen, setMenuOpen] = useState(false);
   const location = useLocation();
+
+  const navigate = useNavigate();
+  const handleClick = () => {
+  
+    navigate("/#enquiry_homepage");
+  };
 
   // Sync active tab with current route
   useEffect(() => {
@@ -60,7 +66,8 @@ const Navbar = ({}: NavbarProps) => {
           })}
         </ul>
 
-        <button className="bg-[#00A0E3] text-white w-[120px] h-[38px] md:w-[142px] md:h-[43px] rounded-[30px] font-medium text-[16px] md:text-[20px] leading-[100%] hover:bg-blue-400 transition">
+        <button onClick={handleClick}
+         className="bg-[#00A0E3] text-white w-[120px] h-[38px] md:w-[142px] md:h-[43px] rounded-[30px] font-medium text-[16px] md:text-[20px] leading-[100%] hover:bg-blue-400 transition">
           Enquiry
         </button>
       </div>
@@ -116,7 +123,7 @@ const Navbar = ({}: NavbarProps) => {
                 <Link to={item.href}>{item.label}</Link>
               </li>
             ))}
-            <button className="bg-[#00A0E3] text-white w-full h-[43px] rounded-[30px] font-medium text-[18px] leading-[100%] hover:bg-blue-400 transition">
+            <button onClick={handleClick}  className="bg-[#00A0E3] text-white w-full h-[43px] rounded-[30px] font-medium text-[18px] leading-[100%] hover:bg-blue-400 transition">
               Enquiry
             </button>
           </ul>

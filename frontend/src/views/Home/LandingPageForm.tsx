@@ -1,8 +1,8 @@
-import Form from "../../components/Form"; 
+import Form from "../../components/Forms/HomeForm"; 
 
 function LandingPageForm() {
   return (
-    <div className="w-full min-h-[658px] bg-[#3664EF] flex flex-col  lg:flex-row mt-24 px-5 lg:px-20 py-10 lg:py-16 mx-auto">
+    <div id="enquiry_homepage" className="w-full min-h-[658px] bg-[#3664EF] flex flex-col  lg:flex-row mt-24 px-5 lg:px-20 py-10 lg:py-16 mx-auto">
       {/* Left Content */}
       <div className="w-full lg:w-1/2 text-white flex flex-col justify-center">
         <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-medium pb-5 sm:pb-7 lg:pb-10 leading-snug">
