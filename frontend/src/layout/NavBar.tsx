@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useNavbarViewModel } from "../viewmodels/NavbarViewModel";
 import logo from "../assets/logo.svg";
-import brandName from "../assets/brandName.svg";
+import brandName from "../assets/brandname.svg";
 
 type NavbarProps = {};
 
