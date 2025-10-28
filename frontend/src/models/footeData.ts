@@ -3,8 +3,8 @@ export const footerData = {
   programs: ['Internships', 'Courses', 'School Coaching', 'NIOS/IGNOU'],
  contact: {
   address: [
-    'Muppathadam Rd,Near Muthukkad',
-    'Temple, Muppathadam,Edayar, Aluva',
+    'Muppathadom junction,opposite surya opticals,',
+    'Muppathadam,Edayar, Aluva',
     'Kerala 683110',
   ],
   phone: '+91 7306353515',
