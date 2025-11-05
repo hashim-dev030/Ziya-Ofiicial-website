@@ -1,4 +1,4 @@
-import directorIMG from "../../assets/image_73.svg";
+import directorIMG from "../../assets/Aslam_ceo.jpeg";
 
 const DirectorMessage = () => {
   return (
@@ -10,10 +10,12 @@ const DirectorMessage = () => {
             src={directorIMG}
             alt="Director"
             className="rounded-3xl w-40 h-40 sm:w-56 sm:h-56 lg:w-64 lg:h-64 object-cover mb-4"
+            onContextMenu={(e) => e.preventDefault()}  // disables right-click
+            draggable="false"                          // disables drag-save
           />
           <div>
             <div className="font-bold text-lg sm:text-xl lg:text-2xl">
-              ASLAM M A
+              ASLAM K A
             </div>
             <div className="text-sm sm:text-base text-gray-700">
               CEO, Ziya Academy

@@ -3,12 +3,12 @@ export const footerData = {
   programs: ['Internships', 'Courses', 'School Coaching', 'NIOS/IGNOU'],
  contact: {
   address: [
-    'Muppathadom junction,opposite surya opticals,',
-    'Muppathadam,Edayar, Aluva',
-    'Kerala 683110',
+    'Muppathadom junction, opposite surya opticals',
+    'Muppathadam, Edayar',
+    'Aluva, Kochi, Kerala 683110',
   ],
   phone: '+91 7306353515',
-  email: 'ziyaacademyeduc@gmail.com',
+  email: 'ziyaacademyedu@gmail.com',
 },
 
   social: {

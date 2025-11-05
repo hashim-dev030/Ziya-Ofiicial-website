@@ -1,4 +1,5 @@
 export interface InternshipCardProps {
+  id ?: any;
   image: string;
   title: string;
   companyName:string,

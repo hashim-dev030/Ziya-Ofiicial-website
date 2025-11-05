@@ -1,19 +1,18 @@
+import AnimatedBackground from "../../components/Animation/AnimatedBackground";
 
 export default function CoursesHero() {
   return (
     <div className="relative w-full h-64 sm:h-80 md:h-96 lg:h-[28rem] xl:h-[32rem] overflow-hidden">
-      {/* Background Image */}
-      <div 
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-        style={{
-          backgroundImage: "url('https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=1600&q=80')",
-        }}
-      >
-        {/* Overlay */}
-        <div className="absolute inset-0 bg-black/50"></div>
-      </div>
-      
-      {/* Content */}
+      <AnimatedBackground
+        src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=1600&q=80"
+        zoom={1.1}
+        duration={5}
+        once={false}
+      />
+
+      <div className="absolute inset-0 bg-black/50"></div>
+
+  
       <div className="relative z-10 flex flex-col items-center justify-center h-full px-4 sm:px-6 lg:px-8">
         <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white text-center mb-4 sm:mb-6 md:mb-8">
           Our Courses

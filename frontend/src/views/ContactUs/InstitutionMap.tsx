@@ -1,10 +1,21 @@
+
+
+import { motion } from "framer-motion";
+
 const InstituitionMap = () => {
   return (
   <div className="w-full py-10  flex flex-col items-center">
   <h2 className="text-2xl md:text-3xl font-medium font-['Poppins'] text-center">
     Find Us on Map
   </h2>
-    <section className="w-full flex justify-center items-center py-10 ">
+    {/* <section className="w-full flex justify-center items-center py-10 "> */}
+    <motion.section
+        initial={{ opacity: 0, scale: 0.9 }}
+        whileInView={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 0.8, ease: "easeOut" }}
+        viewport={{ once: true, amount: 0.3 }}
+        className="w-full flex justify-center items-center py-10"
+      >
       <div className="w-full max-w-4xl h-[400px] rounded-xl overflow-hidden shadow-lg">
         <iframe
           title="Ziya Academy Location"
@@ -17,7 +28,9 @@ const InstituitionMap = () => {
           referrerPolicy="no-referrer-when-downgrade"
         ></iframe>
       </div>
-    </section>
+
+      </motion.section>
+    {/* </section> */}
     </div>
 
   )

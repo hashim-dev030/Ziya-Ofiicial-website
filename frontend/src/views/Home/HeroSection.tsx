@@ -6,6 +6,8 @@ import mastery from "../../assets/mastery_icon.svg";
 import employees from "../../assets/employee_icon.svg";
 import CountUp from "react-countup";
 import { Link } from "react-router-dom";
+import FadeInTitle from "../../components/Animation/FadeInTitle";
+import AnimatedArrow from "../../components/Animation/AnimatedArrow";
 
 const HeroSection = () => {
 
@@ -38,7 +40,7 @@ const HeroSection = () => {
 
 <section className=" pt-[8.611vh] pb-[14.444vh] flex flex-col justify-center px-4 sm:px-6 md:px-8 bg-white">
   {/* Top Section */}
-  <div className="max-w-[118.056vw] mx-auto flex flex-col lg:flex-row items-center justify-between gap-6 sm:gap-8 md:gap-44 px-4 sm:px-6 md:px-8">
+  <FadeInTitle className="max-w-[118.056vw] mx-auto flex flex-col lg:flex-row items-center justify-between gap-6 sm:gap-8 md:gap-44 px-4 sm:px-6 md:px-8">
     {/* Left: Text */}
     <div className="flex-1 space-y-4 sm:space-y-5 text-center lg:text-left ">
       <h1 className="text-[2.125rem] sm:text-[34px] md:text-[38px] lg:text-[44px]  font-['Poppins'] font-semibold leading-[1.2] animate-bounce [animation-duration:3s] ">
@@ -75,7 +77,7 @@ const HeroSection = () => {
         className="w-[200px] sm:w-[260px] md:w-[320px] lg:w-[380px] object-contain"
       />
     </div>
-  </div>
+   </FadeInTitle>
 
   {/* icon Section  */}
    <div
@@ -108,8 +110,9 @@ const HeroSection = () => {
           </h3>
          </div>       ))}
      </div>
+ <AnimatedArrow/>
  
-</section>
+     </section>
   );
 };
 

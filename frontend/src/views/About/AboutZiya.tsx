@@ -1,10 +1,13 @@
 import React from "react";
 import AboutZiyaImg from "../../assets/Images/About/About_Ziya.svg";
 import AcademyIcon from "../../assets/Icons/AcademyIcon.svg";
+import AnimatedSection from "../../components/Animation/AnimatedSection";
 
 const AboutZiya: React.FC = () => {
   return (
-    <section className="py-16 px-6 md:px-12 lg:px-20">
+      <AnimatedSection
+          direction="up"
+          delay={0.15}  className="py-16 px-6 md:px-12 lg:px-20">
         <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-10 lg:gap-16 bg-[#F3FAFF] rounded-2xl p-8 md:p-12 lg:p-16">
 
         {/* Left Content */}
@@ -58,7 +61,8 @@ const AboutZiya: React.FC = () => {
         </div>
 
       </div>
-    </section>
+      </AnimatedSection>
+
   );
 };
 

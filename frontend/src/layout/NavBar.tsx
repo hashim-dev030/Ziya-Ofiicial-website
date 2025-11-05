@@ -1,8 +1,7 @@
-import React, { useState, useEffect } from "react";
+import  { useState, useEffect } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useNavbarViewModel } from "../viewmodels/NavbarViewModel";
-import logo from "../assets/logo.svg";
-import brandName from "../assets/brandname.svg";
+import logo from "../assets/icon_heading.svg";
 
 type NavbarProps = {};
 
@@ -14,7 +13,7 @@ const Navbar = ({}: NavbarProps) => {
   const navigate = useNavigate();
   const handleClick = () => {
   
-    navigate("/#enquiry_homepage");
+    navigate("/#homeEnquiry");
   };
 
   // Sync active tab with current route
@@ -29,22 +28,15 @@ const Navbar = ({}: NavbarProps) => {
   }, [location.pathname]);
 
   return (
-    <nav className="w-full max-w-[100vw] h-[89px] bg-[#FFFFFF] shadow-md flex items-center justify-between px-6 md:px-[48px] mx-auto">
+    <nav className="w-full  h-[89px] bg-[#FFFFFF] shadow-md flex items-center justify-between px-6 md:px-4  mx-auto">
       {/* Left: Logo + Brand */}
-      <div className="relative flex items-center">
-        <img src={logo} alt="Logo" className="w-[50px] h-[55px] md:w-[66px] md:h-[70px]" />
-        <div className="relative ml-[-60px] md:ml-[-77px]">
-          <img
-            src={brandName}
-            alt="Ziya Academy"
-            className="block w-[70px] h-[17px] md:w-[88px] md:h-[21px]"
-          />
-        </div>
+      <div className="relative flex items-center ">
+        <img src={logo} alt="Logo" className="w-[50px] h-[50px] md:w-[55px] md:h-[55px] lg:w-[90px] lg:h-[90px]" />
       </div>
 
       {/* Desktop Menu */}
-      <div className="hidden md:flex items-center">
-        <ul className="flex items-center pr-[26px] text-[14px] md:text-[16px] font-medium text-gray-700 leading-[100%]">
+      <div className="hidden md:flex items-center ">
+        <ul className="flex items-center pr-[25px] text-[14px] md:text-[14px] lg:text-[18px] font-medium text-gray-700 leading-[100%]">
           {items.map((item) => {
             const gaps = { Home: 25, About: 25, Courses: 25, Internships: 25, Service: 25, Career :25 } as const;
             const isLast = item.label === "Contact Us";
@@ -67,7 +59,7 @@ const Navbar = ({}: NavbarProps) => {
         </ul>
 
         <button onClick={handleClick}
-         className="bg-[#00A0E3] text-white w-[120px] h-[38px] md:w-[142px] md:h-[43px] rounded-[30px] font-medium text-[16px] md:text-[20px] leading-[100%] hover:bg-blue-400 transition">
+         className="bg-[#00A0E3] text-white w-[120px] h-[38px] md:w-[120px] md:h-[40px] lg:w-[142px] lg:h-[44px] rounded-[30px] font-medium text-[16px] md:text-[20px] leading-[100%] hover:bg-blue-400 transition">
           Enquiry
         </button>
       </div>
@@ -123,7 +115,7 @@ const Navbar = ({}: NavbarProps) => {
                 <Link to={item.href}>{item.label}</Link>
               </li>
             ))}
-            <button onClick={handleClick}  className="bg-[#00A0E3] text-white w-full h-[43px] rounded-[30px] font-medium text-[18px] leading-[100%] hover:bg-blue-400 transition">
+            <button onClick={handleClick} className="bg-[#00A0E3] text-white w-full h-[43px] rounded-[30px] font-medium text-[18px] leading-[100%] hover:bg-blue-400 transition">
               Enquiry
             </button>
           </ul>

@@ -1,12 +1,17 @@
 import ContactImg from '../../assets/Images/ContactUs/contact-us-banner.jpg'
+import AnimatedBackground from '../../components/Animation/AnimatedBackground';
 
 const ContactUsCover : React.FC = () => {
   return (
     <section className="relative w-full h-[60vh] md:h-[70vh] lg:h-[80vh] flex items-center justify-center overflow-hidden">
       {/* Background Image */}
-      <img
+    
+       <AnimatedBackground
         src={ContactImg}
         alt="Contact Us Cover"
+        zoom={1.1}
+        duration={5}
+        once={false} 
         className="absolute inset-0 w-full h-full object-cover object-center"
       />
 

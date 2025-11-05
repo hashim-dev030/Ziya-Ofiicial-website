@@ -25,13 +25,15 @@ const ServiceSectionCard: React.FC<ServiceData> = ({
         <img
           src={icon}
           alt={pillarTitle}
-          className="w-[89px] h-[89px] object-contain"
+          className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 lg:w-[86px] lg:h-[86px] object-contain"
         />
+
         <div>
-          <h2 className="text-[#00A0E3] font-medium text-[25px] leading-normal font-['Poppins']">
+          <h2 className="text-[#00A0E3] font-semibold text-lg sm:text-xl md:text-2xl lg:text-[25px] leading-snug font-poppins">
             {pillarTitle}
           </h2>
-          <h3 className="text-black font-medium text-[25px] leading-normal font-['Poppins']">
+
+          <h3 className="text-black font-medium text-base sm:text-lg md:text-xl lg:text-[22px] leading-snug font-poppins">
             {pillarSubtitle}
           </h3>
         </div>

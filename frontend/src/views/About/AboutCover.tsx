@@ -1,13 +1,16 @@
 import AboutImg from '../../assets/Images/About/AboutUs_cover.svg'
+import AnimatedBackground from '../../components/Animation/AnimatedBackground';
 
 const AboutCover: React.FC = () => {
   return (
     <section className="relative w-full h-[60vh] md:h-[70vh] lg:h-[80vh] flex items-center justify-center overflow-hidden">
       {/* Background Image */}
-      <img
+     <AnimatedBackground
         src={AboutImg}
         alt="About Us Cover"
-        className="absolute inset-0 w-full h-full object-cover object-center"
+        zoom={1.1}
+        duration={5}
+        once={false} // set true if you want one-time zoom only
       />
 
       {/* Blue Tint Overlay */}
@@ -21,7 +24,7 @@ const AboutCover: React.FC = () => {
         <p className="text-base sm:text-lg md:text-3xl max-w-6xl mx-auto leading-relaxed">
           Empowering Future Leaders Through Education & Innovation
         </p>
-      </div>
+      </div>  
     </section>
   );
 };

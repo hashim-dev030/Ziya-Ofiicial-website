@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <!-- Main Pages -->
+  <url>
+    <loc>https://www.ziyaacademy.co.in/</loc>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://www.ziyaacademy.co.in/about</loc>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://www.ziyaacademy.co.in/courses</loc>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://www.ziyaacademy.co.in/service</loc>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://www.ziyaacademy.co.in/internships</loc>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://www.ziyaacademy.co.in/Career</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.ziyaacademy.co.in/contact</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.ziyaacademy.co.in/terms</loc>
+    <priority>0.5</priority>
+  </url>
+</urlset>

@@ -5,6 +5,7 @@ import { MdOutlineMapsHomeWork } from "react-icons/md";
 import type { InternshipCardProps } from "../../models/CardData/InternshipCardData";
 
 const InternshipCard: React.FC<InternshipCardProps> = ({
+  id,
   image,
   title,
   companyName,
@@ -14,13 +15,16 @@ const InternshipCard: React.FC<InternshipCardProps> = ({
   onViewDetails,
   }) => {
     return (
-      <div className="bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300 w-full max-w-sm mx-auto flex flex-col font-['Poppins'] h-full border border-gray-200">
+      <div className="bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300 w-full max-w-sm mx-auto flex flex-col font-['Poppins'] h-full border border-gray-200 transform hover:-translate-y-2 hover:scale-[1.02]">
         {/* Image */}
+         <div className="relative w-full h-48 overflow-hidden group">
         <img
           src={image}
           alt={title}
           className="w-full h-48 object-cover"
         />
+        < div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/40 to-transparent transform -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-in-out"></div>
+    </div>
   
         {/* Content */}
         <div className="p-6 flex flex-col flex-1 text-left">

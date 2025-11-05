@@ -4,7 +4,7 @@ import EligiblityBox from "../../components/EligiblityBox";
 import { splitParagraph } from "../../utils/SplitParagraph";
 import { useParams } from "react-router-dom";
 import { mockCourses } from "./CourseSection";
-import BackToCourse from "../../components/BackToCourse";
+import BackCommon from "../../components/Buttons/BackCommonButton";
 import syllabus from "../../assets/Icons/Course/syllabus.svg";
 import EnquiryForm from "../../components/Forms/EnquiryForm";
 
@@ -21,7 +21,7 @@ export default function AcademicCoursePage() {
       <div className="w-full flex justify-center bg-white font-[Poppins]">
         <div className="max-w-[1445px] px-4  sm:px-6 lg:px-6 mt-10">
           {/* === Back to Course === */}
-          <BackToCourse />
+          <BackCommon link={"courses"} />
 
           {/* === Course Category Button === */}
           <div className="mt-5 mb-4">
@@ -123,13 +123,12 @@ export default function AcademicCoursePage() {
           ))}
         </div>
       </div>
-        <EnquiryForm/>
+      <EnquiryForm />
       <div>
-  <p>&nbsp;</p>
-  <p>&nbsp;</p>
-  <p>&nbsp;</p>
-</div>
-
+        <p>&nbsp;</p>
+        <p>&nbsp;</p>
+        <p>&nbsp;</p>
+      </div>
     </>
   );
 }

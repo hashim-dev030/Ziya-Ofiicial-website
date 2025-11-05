@@ -1,6 +1,6 @@
 import React from "react";
 import { BsClock } from "react-icons/bs";
-import type { CourseCardProps } from "../models/CourseCardData";
+import type { CourseCardProps } from "../../models/CourseCardData";
 
 const CourseCard: React.FC<CourseCardProps> = ({
   image,

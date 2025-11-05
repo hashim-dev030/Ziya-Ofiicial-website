@@ -1,10 +1,16 @@
 import React from "react";
 import { GoArrowRight } from "react-icons/go";
 import CoursesImg from "../../assets/Courses.svg"; 
+import AnimatedSection from "../../components/Animation/AnimatedSection";
+import { useNavigate } from "react-router-dom";
+
 
 const CourseOffering: React.FC = () => {
+  const navigate = useNavigate();
   return (
-    <section className="bg-[#EFF4F8] py-12 sm:py-16 px-4 sm:px-6 md:px-12 lg:px-24 flex flex-col md:flex-row items-center gap-6 md:gap-8 lg:gap-12">
+    <AnimatedSection
+      direction="up"
+      delay={0.15}  className="bg-[#EFF4F8] py-12 sm:py-16 px-4 sm:px-6 md:px-12 lg:px-24 flex flex-col md:flex-row items-center gap-6 md:gap-8 lg:gap-12">
       {/* Left Side */}
       <div className="flex-1 md:flex-[0.55] lg:flex-[0.5] max-w-full">
         <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-[#262338] leading-[1.2] font-['Raleway']">
@@ -16,16 +22,17 @@ const CourseOffering: React.FC = () => {
           Our courses are carefully designed to enrich and <br />
           transform your educational experience.
         </p>
-        <button className="mt-6 bg-[#37749D] hover:bg-blue-600 hover:cursor-pointer text-white px-4 sm:px-5 py-2 sm:py-3 rounded-md transition flex items-center gap-2 sm:gap-3 text-sm sm:text-base">
+        <button onClick={()=>navigate('/courses')} className="mt-6 bg-[#37749D] hover:bg-cyan-600 hover:cursor-pointer text-white px-4 sm:px-5 py-2 sm:py-3 rounded-md transition flex items-center gap-2 sm:gap-3 text-sm sm:text-base">
           Browse Our Courses <GoArrowRight className="w-4 h-4 sm:w-5 sm:h-5" />
         </button>
       </div>
 
       {/* Right Side */}
-      <div className="flex-1 md:flex-[0.45] relative w-full h-[300px] sm:h-[350px] md:h-[450px] lg:h-[500px] xl:h-[550px]">
-        <img src={CoursesImg} alt="Course Offerings" className="w-full h-full object-cover" />
+      <div className="flex-1 md:flex-[0.45] relative w-full h-[300px] sm:h-[350px] md:h-[450px] lg:h-[500px] xl:h-[550px] overflow-hidden">
+        <img src={CoursesImg} alt="Course Offerings" className="w-full h-full   transition-transform duration-500 ease-in-out hover:scale-105 active:scale-95 cursor-pointer" />
       </div>
-    </section>
+
+     </AnimatedSection>
   );
 };
 

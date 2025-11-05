@@ -1,11 +1,15 @@
+import { useState } from "react";
 import { useFormViewModel } from "../../viewmodels/FormViewModel";
+import toast from "react-hot-toast";
 
-// ✅ Add Google Apps Script URL
+//  Add Google Apps Script URL
 const GOOGLE_SCRIPT_URL =
   "https://script.google.com/macros/s/AKfycby94ZzaWqYCk2HNmOde0wiBzI5QsHSlPYE6Z5UuEnJfSUf_EXu94GOOWaqUV5oUFTU-/exec";
 
 const Form = () => {
+  
   const { formData, handleChange, handleSubmit, areasOfInterest } = useFormViewModel();
+  const [loading, setLoading] = useState(false);
 
   return (
     <div className="bg-white p-6 sm:p-8 md:p-10 w-full max-w-md md:max-w-xl rounded-2xl flex flex-col">
@@ -16,37 +20,38 @@ const Form = () => {
 
       <form
         className="flex flex-col space-y-4 sm:space-y-5 md:space-y-6"
-       onSubmit={async (e) => {
-  e.preventDefault();
-  try {
-    handleSubmit();
+        onSubmit={async (e) => {
+            e.preventDefault();
+            try {
+              setLoading(true);
+              handleSubmit();
 
-    const payload = {
-      name: formData.fullName,     // match script's expected field
-      email: formData.email,
-      phone: formData.phone,
-      subject: formData.interest,  // send selected interest as subject
-      message: "",                 
-    };
+              const payload = {
+                name: formData.fullName,     
+                email: formData.email,
+                phone: formData.phone,
+                subject: formData.interest,  // send selected interest as subject
+                message: "",                 
+              };
 
-    await fetch(GOOGLE_SCRIPT_URL, {
-      method: "POST",
-      mode: "no-cors", 
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(payload),
-    });
+              await fetch(GOOGLE_SCRIPT_URL, {
+                method: "POST",
+                mode: "no-cors", 
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(payload),
+              });
 
-    alert("✅ Thank you! Your enquiry has been sent successfully.");
+              toast.success("Thank you! Your enquiry has been sent successfully!");
+              Object.keys(formData).forEach((key) => handleChange(key, "")); //reset form
+            } catch (error) {
+              console.error("Submission error:", error);
+              toast.error("Failed to submit form. Please try again.");
+            }finally {
+              setLoading(false); 
+            }
+          }}
 
-    // reset the form
-    Object.keys(formData).forEach((key) => handleChange(key, ""));
-  } catch (error) {
-    console.error("Submission error:", error);
-    alert("⚠️ Failed to submit form. Please try again.");
-  }
-}}
-
-      >
+        >
         <input
           type="text"
           placeholder="Full Name"
@@ -97,9 +102,36 @@ const Form = () => {
 
         <button
           type="submit"
-          className="bg-[#00A0E3] text-white w-full h-11 sm:h-12 md:h-14 rounded-lg mt-8 sm:mt-10 md:mt-12 font-semibold text-base sm:text-lg md:text-xl hover:bg-blue-700 transition"
+          disabled={loading}
+          className="bg-[#00A0E3] text-white w-full h-11 sm:h-12 md:h-14 rounded-lg mt-8 sm:mt-10 md:mt-12 font-semibold text-base sm:text-lg md:text-xl hover:bg-blue-500 transition hover:cursor-pointer disabled:opacity-70 disabled:cursor-not-allowed"
         >
-          Submit
+          {loading ? (
+              <div className="flex items-center justify-center space-x-3">
+                <svg
+                  className="animate-spin h-7 w-7 text-white"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                >
+                  <circle
+                    className="opacity-25"
+                    cx="12"
+                    cy="12"
+                    r="10"
+                    stroke="currentColor"
+                    strokeWidth="3"
+                  ></circle>
+                  <path
+                    className="opacity-75"
+                    fill="currentColor"
+                    d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                  ></path>
+                </svg>
+                <span className="animate-pulse">Processing...</span>
+              </div>
+            ) : (
+              "Submit"
+            )}
         </button>
       </form>
     </div>

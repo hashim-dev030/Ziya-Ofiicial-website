@@ -1,13 +1,22 @@
 import InternshipImg from '../../assets/Images/Internships/Internship-cover.jpg'
+import AnimatedBackground from '../../components/Animation/AnimatedBackground';
 
 const InternshipCover: React.FC = () => {
   return (
     <section className="relative w-full h-[60vh] md:h-[70vh] lg:h-[80vh] flex items-center justify-center overflow-hidden">
       {/* Background Image */}
-      <img
+      {/* <img
         src={InternshipImg}
         alt="About Us Cover"
         className="absolute inset-0 w-full h-full object-cover object-center"
+      /> */}
+      <AnimatedBackground
+        src={InternshipImg}
+        alt="About Us Cover"
+        zoom={1.1}
+        duration={5}
+        once={false} // set true if you want one-time zoom only
+         className="absolute inset-0 w-full h-full object-cover object-center"
       />
 
       {/* Blue Tint Overlay */}
