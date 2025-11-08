@@ -5,7 +5,6 @@ import { MdOutlineMapsHomeWork } from "react-icons/md";
 import type { InternshipCardProps } from "../../models/CardData/InternshipCardData";
 
 const InternshipCard: React.FC<InternshipCardProps> = ({
-  id,
   image,
   title,
   companyName,
