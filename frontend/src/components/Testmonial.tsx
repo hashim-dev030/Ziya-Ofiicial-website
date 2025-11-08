@@ -63,7 +63,7 @@ const testimonials = [
         quote: "Ziya Academy provided the ideal environment to hone my Python skills, enabling me to immediately contribute to complex projects with confidence.",
         name: "Anoop K",
         title: "Python Developer.",
-        image: "https://media.licdn.com/dms/image/v2/D5603AQEwQyYjoMc3Zg/profile-displayphoto-crop_800_800/B56ZjVxWkBG0AM-/0/1755933143299?e=1762992000&v=beta&t=L63EEWB35Pp9g_FOTCLeBxs3eZzQBzZL80rqyB0c6Z0",
+        image: "https://media.licdn.com/dms/image/v2/D5603AQGwi6zrYbgi1w/profile-displayphoto-crop_800_800/B56ZpcBVm7HYAI-/0/1762480448755?e=1764201600&v=beta&t=Ew0VboyCa7uuHQyvS8Aa06CLHaZruF-wKnYB1PodjEo",
     },
     {
         id: 9,

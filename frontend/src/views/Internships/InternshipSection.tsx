@@ -161,7 +161,6 @@ const InternshipSection: React.FC = () => {
              duration={internshipItem.duration}
              workMode={internshipItem.workMode}
              onViewDetails={() => {
-               console.log("id :", internshipItem.id);
                navigate(`/internship/${internshipItem.id}`);
              } } 
             //  id={internshipItem.id}         
