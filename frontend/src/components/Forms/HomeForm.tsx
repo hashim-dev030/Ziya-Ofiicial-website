@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useFormViewModel } from "../../viewmodels/FormViewModel";
 import toast from "react-hot-toast";
 
-//  Add Google Apps Script URL
+// ✅ Add Google Apps Script URL
 const GOOGLE_SCRIPT_URL =
   "https://script.google.com/macros/s/AKfycby94ZzaWqYCk2HNmOde0wiBzI5QsHSlPYE6Z5UuEnJfSUf_EXu94GOOWaqUV5oUFTU-/exec";
 
@@ -10,6 +10,55 @@ const Form = () => {
   
   const { formData, handleChange, handleSubmit, areasOfInterest } = useFormViewModel();
   const [loading, setLoading] = useState(false);
+  const [errors, setErrors] = useState({
+    fullName: "",
+    email: "",
+    phone: "",
+    interest: "",
+  });
+
+  const validateForm = () => {
+    let valid = true;
+    const newErrors = { fullName: "", email: "", phone: "", interest: "" };
+
+    // Full Name validation
+    if (!formData.fullName.trim()) {
+      newErrors.fullName = "Full name is required.";
+      valid = false;
+    } else if (formData.fullName.trim().length < 3) {
+      newErrors.fullName = "Name must be at least 3 characters.";
+      valid = false;
+    }
+
+    // Email validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!formData.email.trim()) {
+      newErrors.email = "Email is required.";
+      valid = false;
+    } else if (!emailRegex.test(formData.email)) {
+      newErrors.email = "Enter a valid email address.";
+      valid = false;
+    }
+
+    // Phone validation
+    const phoneRegex = /^[0-9]{10}$/;
+    if (!formData.phone.trim()) {
+      newErrors.phone = "Phone number is required.";
+      valid = false;
+    } else if (!phoneRegex.test(formData.phone)) {
+      newErrors.phone = "Enter a valid 10-digit phone number.";
+      valid = false;
+    }
+
+    // Interest validation
+    if (!formData.interest.trim()) {
+      newErrors.interest = "Please select an area of interest.";
+      valid = false;
+    }
+
+    setErrors(newErrors);
+    return valid;
+  };
 
   return (
     <div className="bg-white p-6 sm:p-8 md:p-10 w-full max-w-md md:max-w-xl rounded-2xl flex flex-col">
@@ -22,6 +71,12 @@ const Form = () => {
         className="flex flex-col space-y-4 sm:space-y-5 md:space-y-6"
         onSubmit={async (e) => {
             e.preventDefault();
+
+            if (!validateForm()) {
+            toast.error("Please fill the form before submitting.");
+            return;
+          }
+
             try {
               setLoading(true);
               handleSubmit();
@@ -43,6 +98,7 @@ const Form = () => {
 
               toast.success("Thank you! Your enquiry has been sent successfully!");
               Object.keys(formData).forEach((key) => handleChange(key, "")); //reset form
+              setErrors({ fullName: "", email: "", phone: "", interest: "" });
             } catch (error) {
               console.error("Submission error:", error);
               toast.error("Failed to submit form. Please try again.");
@@ -52,35 +108,68 @@ const Form = () => {
           }}
 
         >
+        <div>
         <input
           type="text"
           placeholder="Full Name"
           value={formData.fullName}
           onChange={(e) => handleChange("fullName", e.target.value)}
-          className="border border-gray-300 text-base sm:text-lg md:text-xl pl-4 sm:pl-6 md:pl-8 text-gray-500 rounded-lg w-full h-11 sm:h-12 md:h-14 focus:outline-none focus:ring-2 focus:ring-[#3664EF]"
+          className={`border ${
+              errors.fullName ? "border-red-500" : "border-gray-300"
+            } text-base sm:text-lg md:text-xl pl-4 sm:pl-6 md:pl-8 text-gray-500 rounded-lg w-full h-11 sm:h-12 md:h-14 focus:outline-none focus:ring-2 ${
+              errors.fullName ? "focus:ring-red-500" : "focus:ring-[#3664EF]"
+            }`}
         />
+        {errors.fullName && (
+            <p className="text-red-500 text-sm mt-1">{errors.fullName}</p>
+          )}
+        </div>
 
-        <input
-          type="email"
-          placeholder="Email Address"
-          value={formData.email}
-          onChange={(e) => handleChange("email", e.target.value)}
-          className="border border-gray-300 text-base sm:text-lg md:text-xl pl-4 sm:pl-6 md:pl-8 text-gray-500 rounded-lg w-full h-11 sm:h-12 md:h-14 focus:outline-none focus:ring-2 focus:ring-[#3664EF]"
-        />
+       {/* Email */}
+        <div>
+          <input
+            type="email"
+            placeholder="Email Address"
+            value={formData.email}
+            onChange={(e) => handleChange("email", e.target.value)}
+            className={`border ${
+              errors.email ? "border-red-500" : "border-gray-300"
+            } text-base sm:text-lg md:text-xl pl-4 sm:pl-6 md:pl-8 text-gray-500 rounded-lg w-full h-11 sm:h-12 md:h-14 focus:outline-none focus:ring-2 ${
+              errors.email ? "focus:ring-red-500" : "focus:ring-[#3664EF]"
+            }`}
+          />
+          {errors.email && (
+            <p className="text-red-500 text-sm mt-1">{errors.email}</p>
+          )}
+        </div>
 
-        <input
-          type="tel"
-          placeholder="Phone Number"
-          value={formData.phone}
-          onChange={(e) => handleChange("phone", e.target.value)}
-          className="border border-gray-300 text-base sm:text-lg md:text-xl pl-4 sm:pl-6 md:pl-8 text-gray-500 rounded-lg w-full h-11 sm:h-12 md:h-14 focus:outline-none focus:ring-2 focus:ring-[#3664EF]"
-        />
+        {/* Phone */}
+        <div>
+          <input
+            type="tel"
+            placeholder="Phone Number"
+            value={formData.phone}
+            onChange={(e) => handleChange("phone", e.target.value)}
+            className={`border ${
+              errors.phone ? "border-red-500" : "border-gray-300"
+            } text-base sm:text-lg md:text-xl pl-4 sm:pl-6 md:pl-8 text-gray-500 rounded-lg w-full h-11 sm:h-12 md:h-14 focus:outline-none focus:ring-2 ${
+              errors.phone ? "focus:ring-red-500" : "focus:ring-[#3664EF]"
+            }`}
+          />
+          {errors.phone && (
+            <p className="text-red-500 text-sm mt-1">{errors.phone}</p>
+          )}
+        </div>
 
         <div className="relative w-full">
           <select
             value={formData.interest}
             onChange={(e) => handleChange("interest", e.target.value)}
-            className="appearance-none border text-base sm:text-lg md:text-xl border-gray-300 text-gray-700 pl-4 sm:pl-6 md:pl-8 pr-10 rounded-lg w-full h-11 sm:h-12 md:h-14 focus:outline-none focus:ring-2 focus:ring-[#3664EF]"
+            className={`appearance-none border ${
+                errors.interest ? "border-red-500" : "border-gray-300"
+              } text-base sm:text-lg md:text-xl text-gray-700 pl-4 sm:pl-6 md:pl-8 pr-10 rounded-lg w-full h-11 sm:h-12 md:h-14 focus:outline-none focus:ring-2 ${
+                errors.interest ? "focus:ring-red-500" : "focus:ring-[#3664EF]"
+              }`}
           >
             <option value="">Choose your area of interest</option>
             {areasOfInterest.map((area) => (
@@ -98,12 +187,15 @@ const Form = () => {
           >
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
           </svg>
+          {errors.interest && (
+            <p className="text-red-500 text-sm mt-1">{errors.interest}</p>
+          )}
         </div>
 
         <button
           type="submit"
           disabled={loading}
-          className="bg-[#00A0E3] text-white w-full h-11 sm:h-12 md:h-14 rounded-lg mt-8 sm:mt-10 md:mt-12 font-semibold text-base sm:text-lg md:text-xl hover:bg-blue-500 transition hover:cursor-pointer disabled:opacity-70 disabled:cursor-not-allowed"
+          className="bg-[#00A0E3] text-white w-full h-11 sm:h-12 md:h-14 rounded-lg mt-8 sm:mt-10 md:mt-12 font-semibold text-base sm:text-lg md:text-xl hover:bg-blue-700 transition hover:cursor-pointer disabled:opacity-70 disabled:cursor-not-allowed"
         >
           {loading ? (
               <div className="flex items-center justify-center space-x-3">

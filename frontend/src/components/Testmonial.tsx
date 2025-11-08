@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState,useRef } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import Alan from '../assets/Images/Testimonials/Alan.jpeg';
 import Noufal from '../assets/Images/Testimonials/Nihal_Mohammed.jpeg'
@@ -6,7 +6,6 @@ import Nihal from '../assets/Images/Testimonials/Mo_Noufal_TN.jpeg'
 import AnimatedSection from './Animation/AnimatedSection';
 import Amal from '../assets/Images/Testimonials/Amal_KM.jpeg'
 
-const defaultImg = "https://cdn.pixabay.com/photo/2019/08/11/18/59/icon-4399701_1280.png";
 
 const testimonials = [
      {
@@ -80,104 +79,82 @@ const testimonials = [
 ];
 
 
-const Testmonial = () => {
-    const [currentIndex, setCurrentIndex] = useState(0);
-    const [imageError, setImageError] = useState(false);
+const Testimonial = () => {
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const loadedImages = useRef<Set<string>>(new Set());
 
-    const currentTestimonial = testimonials[currentIndex];
-    const totalTestimonials = testimonials.length;
+  const currentTestimonial = testimonials[currentIndex];
+  const totalTestimonials = testimonials.length;
 
-    
-    const handlePrev = () => {
-        setCurrentIndex((prevIndex) =>
-            (prevIndex - 1 + totalTestimonials) % totalTestimonials
-        );
-    };
+  const handlePrev = () => {
+    setCurrentIndex((prev) => (prev - 1 + totalTestimonials) % totalTestimonials);
+  };
 
+  const handleNext = () => {
+    setCurrentIndex((prev) => (prev + 1) % totalTestimonials);
+  };
 
-    const handleNext = () => {
-        setCurrentIndex((prevIndex) =>
-            (prevIndex + 1) % totalTestimonials
-        );
-    };
+  // Preload image if not cached
+  if (!loadedImages.current.has(currentTestimonial.image)) {
+    const img = new Image();
+    img.src = currentTestimonial.image;
+    img.onload = () => loadedImages.current.add(currentTestimonial.image);
+  }
 
-    return (
-      <div className=" bg-gray-50 flex items-center justify-center p-4 sm:p-6">
-        <div className="w-full max-w-4xl mx-auto">
-          <header className="text-center mb-12">
-            <h2 className="text-2xl sm:text-4xl font-[500] ">
-              What Our Students Say
-            </h2>
-          </header>
+  return (
+    <div className="bg-gray-50 flex items-center justify-center p-4 sm:p-6">
+      <div className="w-full max-w-4xl mx-auto">
+        <header className="text-center mb-12">
+          <h2 className="text-2xl sm:text-4xl font-[500]">What Our Students Say</h2>
+        </header>
 
-          <div className="flex justify-center pt-[6px]">
-            <AnimatedSection
-              direction="right"
-              delay={0.15}
-              className="bg-white p-8 sm:p-5 rounded-xl shadow-2xl w-[700px] "
-            >
-              <div className="flex flex-col items-center mb-4 relative">
-                {/* Displayed Image */}
-                <img
-                  src={imageError ? defaultImg : currentTestimonial.image}
-                  alt={currentTestimonial.name}
-                  className="w-48 h-48 rounded-full object-cover shadow-[0_0_18px_9px_rgba(148,194,26,0.6)] hover:shadow-[0_0_30px_10px_rgba(148,194,26,0.8)] transition-shadow duration-300 select-none pointer-events-none"
-                  onError={() => setImageError(true)}
-                  onLoad={() => setImageError(false)}
-                  draggable="false"
-                />
+        <div className="flex justify-center pt-[6px]">
+          <AnimatedSection
+            direction="right"
+            delay={0.15}
+            className="bg-white p-8 sm:p-5 rounded-xl shadow-2xl w-[700px]"
+          >
+            <div className="flex flex-col items-center mb-4 relative">
+              <img
+                src={currentTestimonial.image}
+                alt={currentTestimonial.name}
+                className="w-48 h-48 rounded-full object-cover shadow-[0_0_18px_9px_rgba(148,194,26,0.6)] hover:shadow-[0_0_30px_10px_rgba(148,194,26,0.8)] transition-shadow duration-300 select-none pointer-events-none"
+                draggable="false"
+              />
+            </div>
 
-                {/* Invisible overlay link to fake image */}
-                <a
-                  href="https://image-cdn-ak.spotifycdn.com/image/ab67706c0000da846ca06832d588af872a73d15b" 
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="absolute inset-0 cursor-default"
-                  onClick={(e) => e.preventDefault()} 
-                  onContextMenu={(e) => {
-                    e.stopPropagation();
-                  }}
-                >
-                  <span className="sr-only">Open image</span>
-                </a>
-              </div>
+            <div className="border-gray-100 text-center">
+              <p className="text-lg font-[400] text-[#94C21A] sm:text-[18px]">
+                {currentTestimonial.name}
+              </p>
+              <p className="text-sm text-black font-[400]">{currentTestimonial.title}</p>
+            </div>
 
-              <div className=" border-gray-100 text-center">
-                <p className="text-lg font-[400]  text-[#94C21A] sm:text-[18px] ">
-                  {currentTestimonial.name}
-                </p>
-                <p className="text-sm text-black font-[400]">
-                  {currentTestimonial.title}
-                </p>
-              </div>
+            <blockquote className="text-black text-lg sm:text-[18px] font-[400] text-center leading-relaxed min-h-[100px] flex items-center justify-center transition-opacity duration-300">
+              <p key={currentTestimonial.id}>"{currentTestimonial.quote}"</p>
+            </blockquote>
 
-              <blockquote className="text-black text-lg sm:text-[18px] font-[400] text-center leading-relaxed min-h-[100px] flex items-center justify-center transition-opacity duration-300 ">
-                {" "}
-                {/* Removed quote icon block */}
-                <p key={currentTestimonial.id}>"{currentTestimonial.quote}"</p>
-              </blockquote>
-
-              <div className="flex justify-center gap-6 mt-6">
-                <button
-                  onClick={handlePrev}
-                  className="p-3 rounded-full text-black bg-white hover:bg-indigo-50 transition-colors shadow-md hover:shadow-lg focus:outline-none focus:ring-4 focus:ring-indigo-300"
-                  aria-label="Previous testimonial"
-                >
-                  <ChevronLeft className="w-6 h-6" />
-                </button>
-                <button
-                  onClick={handleNext}
-                  className="p-3 rounded-full text-black  bg-white hover:bg-indigo-50 transition-colors shadow-md hover:shadow-lg focus:outline-none focus:ring-4 focus:ring-indigo-300"
-                  aria-label="Next testimonial"
-                >
-                  <ChevronRight className="w-6 h-6" />
-                </button>
-              </div>
-            </AnimatedSection>
-          </div>
+            <div className="flex justify-center gap-6 mt-6">
+              <button
+                onClick={handlePrev}
+                className="p-3 rounded-full text-black bg-white hover:bg-indigo-50 transition-colors shadow-md hover:shadow-lg focus:outline-none focus:ring-4 focus:ring-indigo-300"
+                aria-label="Previous testimonial"
+              >
+                <ChevronLeft className="w-6 h-6" />
+              </button>
+              <button
+                onClick={handleNext}
+                className="p-3 rounded-full text-black bg-white hover:bg-indigo-50 transition-colors shadow-md hover:shadow-lg focus:outline-none focus:ring-4 focus:ring-indigo-300"
+                aria-label="Next testimonial"
+              >
+                <ChevronRight className="w-6 h-6" />
+              </button>
+            </div>
+          </AnimatedSection>
         </div>
       </div>
-    );
+    </div>
+  );
 };
 
-export default Testmonial;
+export default Testimonial;
