@@ -5,31 +5,36 @@ import ignou from "../../assets/ignou.svg";
 import itTraining from "../../assets/itTraining.svg";  
 import internships from "../../assets/internships.svg";  
 
+
 const courses = [
   {
     logo: schoolCoaching,
     name: "School Coaching",
     description: "Lkg to +2 with personalized attention and CBSE/State syllabus",
-    color: '#94C21A'
+    color: '#94C21A',
+    link:'/courses'
   },
   {
     logo: ignou,
     name: "NIOS/IGNOU",
     description: "Complete support for open Schooling and distance education",
-    color: '#00A0E3'
+    color: '#00A0E3',
+    link:'/courses'
 
   },
   {
     logo: itTraining,
     name: "IT Training",
     description: "Web Development, app development , Game Development, UI/UX ,Software Testing.. Etc",
-    color: '#94C21A'
+    color: '#94C21A',
+    link:'/internships'
   },
   {
     logo: internships,
     name: "Internships",
     description: "Hands-on experience with real-world projects",
-    color: '#00A0E3'
+    color: '#00A0E3',
+    link:'/internships'
   },
 ];
 
@@ -49,6 +54,7 @@ const OurCourses: React.FC = () => {
             name={course.name}
             description={course.description}
             color={course.color}
+            link={course.link}
           />
         ))}
       </div>

@@ -1,14 +1,17 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 interface OurCourseCardProps {
   logo: string;
   name: string;
   description: string;
   color: string;
+    link: string; 
 }
 
-const OurCourseCard: React.FC<OurCourseCardProps> = ({ logo, name, description, color }) => {
+const OurCourseCard: React.FC<OurCourseCardProps> = ({ logo, name, description, color,link }) => {
   return (
+        <Link to={link}>
     <div
       className="
         flex flex-col items-center
@@ -41,6 +44,7 @@ const OurCourseCard: React.FC<OurCourseCardProps> = ({ logo, name, description, 
         {description}
       </p>
     </div>
+    </Link>
   );
 };
 

@@ -10,7 +10,7 @@ import name from '../assets/name.svg'
 import facebook from '../assets/Facebook.svg'
 import google from '../assets/Google.png'
 export const Footer = () => {
-  const {  contact, copyright } = useFooter()
+  const { contact, copyright } = useFooter()
 
   return (
     <footer className="bg-[#121828] w-full text-white py-8 md:py-12 font-[Poppins]">

@@ -8,7 +8,7 @@ export const footerData = {
     'Aluva, Kochi, Kerala 683110',
   ],
   phone: '+91 7306353515',
-  email: 'ziyaacademyedu@gmail.com',
+  email: 'ziyaacademyedu@gmail.co.in',
 },
 
   social: {

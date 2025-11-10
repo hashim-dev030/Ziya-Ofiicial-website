@@ -76,10 +76,10 @@ const GetInTouch: React.FC = () => {
             <div>
               <h3 className="font-semibold text-lg mb-1">Email</h3>
               <a
-                href="mailto:ziyaacademyedu@gmail.com"
+                href="mailto:ziyaacademyedu@gmail.co.in"
                 className="text-lime-600 text-sm hover:underline"
               >
-              ziyaacademyedu@gmail.com
+              ziyaacademyedu@gmail.co.in
               </a>
             </div>
           </div>
